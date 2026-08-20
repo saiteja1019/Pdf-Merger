@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Merger</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>PDF Merger</h1>
+        
+        <div id="drop-zone" class="drop-zone">
+            <div class="drop-content">
+                <p>Drag & drop PDF files here</p>
+                <p>or</p>
+                <input type="file" id="files" multiple accept=".pdf" hidden>
+                <button type="button" onclick="document.getElementById('files').click()">Browse Files</button>
+            </div>
+        </div>
+        
+        <div id="file-list"></div>
+        
+        <button id="merge-btn" onclick="mergePDFs()" style="display:none">Merge PDFs</button>
+        
+        <div id="download-section" style="display:none">
+            <div class="success-message">
+                <h3>✓ Merge Completed Successfully!</h3>
+                <p>Your PDFs have been merged into a single document.</p>
+            </div>
+            <div class="action-buttons">
+                <a href="#" id="download-link" class="download-btn">Download Merged PDF</a>
+                <button onclick="startOver()" class="start-over-btn">Start Over</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
